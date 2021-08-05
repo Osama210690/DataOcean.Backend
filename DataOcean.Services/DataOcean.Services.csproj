@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="City\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataOcean.Core\DataOcean.Core.csproj" />
+  </ItemGroup>
+
+</Project>
