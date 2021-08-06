@@ -18,11 +18,14 @@ namespace DataOcean.Core.Repositories.Persistence
             _dataOceanContext = dataOceanContext;
 
             Country = new CountryRepository(_dataOceanContext);
+            City = new CityRepository(_dataOceanContext);
         }
 
         public ICountryRepository Country { get; }
 
+        public ICityRepository City { get; }
 
+         
         public void Dispose()
         {
             _dataOceanContext?.Dispose();

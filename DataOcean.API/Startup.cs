@@ -1,6 +1,7 @@
 using DataOcean.Core.Context;
 using DataOcean.Core.Repositories.Core;
 using DataOcean.Core.Repositories.Persistence;
+using DataOcean.Services.City;
 using DataOcean.Services.Country;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,6 +33,8 @@ namespace DataOcean.API
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<ICountryService, CountryService>();
             services.AddSingleton<ICountryRepository, CountryRepository>();
+            services.AddSingleton<ICityService, CityService>();
+            services.AddSingleton<ICityRepository, CityRepository>();
 
             services.AddControllers();
         }

@@ -17,9 +17,7 @@ namespace DataOcean.API.Controllers
 
         private readonly ICountryService _countryService;
 
-        public CountryController(IUnitOfWork unitOfWork
-            , ICountryService countryService
-            )
+        public CountryController(ICountryService countryService)
         {
             _countryService = countryService;
         }
@@ -46,8 +44,41 @@ namespace DataOcean.API.Controllers
             try
             {
 
-                var result = await _countryService.Create(model);
+                var result = await _countryService.CreateCountry(model);
                 return Ok("Success");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Put(CountryModel model)
+        {
+            try
+            {
+
+                var result = await _countryService.UpdateCountry(model);
+                return Ok(result.Country_Code);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int countryCode)
+        {
+            try
+            {
+
+                var result = await _countryService.DeleteCountry(countryCode);
+                return Ok(result);
             }
             catch (Exception ex)
             {

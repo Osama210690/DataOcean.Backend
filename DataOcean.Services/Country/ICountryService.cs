@@ -1,4 +1,5 @@
-﻿using DataOcean.Core.Models.Country;
+﻿using DataOcean.Core.Models.City;
+using DataOcean.Core.Models.Country;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,9 @@ namespace DataOcean.Services.Country
     public interface ICountryService
     {
         Task<List<CountryModel>> GetAllCountries();
+        Task<CountryModel> CreateCountry(CountryModel model);
+        Task<CountryModel> UpdateCountry(CountryModel model);
+        Task<int> DeleteCountry(int countryCode);
 
-        Task<Core.Domain.Country>  Create(CountryModel model);
     }
 }

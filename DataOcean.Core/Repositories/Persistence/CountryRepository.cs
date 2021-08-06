@@ -32,11 +32,19 @@ namespace DataOcean.Core.Repositories.Persistence
                 .SingleOrDefaultAsync(x => x.Country_Code == countryCode);
         }
 
-        public async Task Create(Country country)
+        public  void Create(Country country)
         {
 
-            await _dataOceanContext.Countries.AddAsync(country);
+              _dataOceanContext.Countries.Add(country);
 
+        }
+
+
+        public void Delete(Country country)
+        {
+
+             _dataOceanContext.Countries.Remove(country);
+                
         }
 
     }

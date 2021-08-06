@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace DataOcean.Core.Repositories.Core
 {
-   public interface ICountryRepository
+    public interface ICountryRepository
     {
-          Task<List<Country>> GetAllCountries();
+        Task<List<Country>> GetAllCountries();
 
-          Task<Country> GetCountryById(int countryCode);
+        Task<Country> GetCountryById(int countryCode);
 
-        Task Create(Country country);
+        void Create(Country country);
+
+        void Delete(Country country);
     }
 }

@@ -11,12 +11,12 @@ namespace DataOcean.Services.Country
         private readonly IUnitOfWork _unitOfWork;
 
 
-        public CountryService(IUnitOfWork unitOfWork, ICountryRepository countryRepository)
+        public CountryService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Core.Domain.Country> Create(CountryModel model)
+        public async Task<CountryModel> CreateCountry(CountryModel model)
         {
 
             var entity = new Core.Domain.Country()
@@ -25,10 +25,26 @@ namespace DataOcean.Services.Country
                 Country_Name_Arabic = model.Country_Name_English
             };
 
-            await _unitOfWork.Country.Create(entity);
+
+            _unitOfWork.Country.Create(entity);
+            await _unitOfWork.DataOceanComplete();
+            model.Country_Code = entity.Country_Code;
+
+            return model;
+        }
+
+        public async Task<CountryModel> UpdateCountry(CountryModel model)
+        {
+
+            var entity = await _unitOfWork.Country.GetCountryById(model.Country_Code);
+
+            entity.Country_Code = model.Country_Code;
+            entity.Country_Name_Arabic = model.Country_Name_Arabic;
+            entity.Country_Name_English = model.Country_Name_English;
+
             await _unitOfWork.DataOceanComplete();
 
-            return entity;
+            return model;
         }
 
         public async Task<List<CountryModel>> GetAllCountries()
@@ -44,6 +60,15 @@ namespace DataOcean.Services.Country
             }).ToList();
         }
 
+        public async Task<int> DeleteCountry(int countryCode)
+        {
+            var entity = await _unitOfWork.Country.GetCountryById(countryCode);
 
+            _unitOfWork.Country.Delete(entity);
+
+            await _unitOfWork.DataOceanComplete();
+
+            return entity.Country_Code;
+        }
     }
 }
