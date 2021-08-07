@@ -62,7 +62,7 @@ namespace DataOcean.API.Controllers
             {
 
                 var result = await _cityService.CreateCity(model);
-                return Ok("Success");
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -78,7 +78,7 @@ namespace DataOcean.API.Controllers
             {
 
                 var result = await _cityService.UpdateCity(model);
-                return Ok(result.City_Code);
+                return Ok(result);
             }
             catch (Exception ex)
             {

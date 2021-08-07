@@ -41,7 +41,7 @@ namespace DataOcean.API
             });
 
 
-            services.AddSingleton<DataOceanContext>();
+            services.AddTransient<DataOceanContext>();
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<ICountryService, CountryService>();
             services.AddSingleton<ICountryRepository, CountryRepository>();

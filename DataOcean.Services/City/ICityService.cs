@@ -10,6 +10,6 @@ namespace DataOcean.Services.City
         Task<List<CityModel>> GetAllCities();
         Task<CityModel> CreateCity(CityModel model);
         Task<CityModel> UpdateCity(CityModel model);
-        Task<int> DeleteCity(int cityCode);
+        Task<CityModel> DeleteCity(int cityCode);
     }
 }
