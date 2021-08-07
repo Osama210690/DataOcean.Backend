@@ -19,13 +19,15 @@ namespace DataOcean.Core.Repositories.Persistence
 
             Country = new CountryRepository(_dataOceanContext);
             City = new CityRepository(_dataOceanContext);
+            Customer = new CustomerRepository(_dataOceanContext);
         }
 
         public ICountryRepository Country { get; }
 
         public ICityRepository City { get; }
 
-         
+        public ICustomerRepository Customer { get; }
+
         public void Dispose()
         {
             _dataOceanContext?.Dispose();
@@ -36,10 +38,10 @@ namespace DataOcean.Core.Repositories.Persistence
             this.Dispose();
         }
 
-        
+
         public async Task DataOceanComplete()
         {
-             await _dataOceanContext.SaveChangesAsync();
+            await _dataOceanContext.SaveChangesAsync();
         }
     }
 }

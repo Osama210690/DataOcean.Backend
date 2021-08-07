@@ -6,10 +6,14 @@
 
   <ItemGroup>
     <Folder Include="City\" />
+    <Folder Include="Customer\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DataOcean.Core\DataOcean.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Customer\" />
+  </ItemGroup>
 </Project>

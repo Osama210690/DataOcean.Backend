@@ -12,6 +12,9 @@ namespace DataOcean.Core.Repositories.Core
 
         ICityRepository City { get; }
 
+        ICustomerRepository Customer { get; }
+
+
         void DisposeContext();
 
         Task DataOceanComplete();

@@ -7,6 +7,11 @@ namespace DataOcean.Core.Domain
 {
     public partial class City
     {
+        public City()
+        {
+            Customers = new HashSet<Customer>();
+        }
+
         public int City_Code { get; set; }
         public int? Country_Code { get; set; }
         public string City_Name_English { get; set; }
@@ -16,5 +21,6 @@ namespace DataOcean.Core.Domain
         public byte[] Updated_Date { get; set; }
 
         public virtual Country Country_CodeNavigation { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
     }
 }

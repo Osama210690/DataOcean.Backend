@@ -3,6 +3,7 @@ using DataOcean.Core.Repositories.Core;
 using DataOcean.Core.Repositories.Persistence;
 using DataOcean.Services.City;
 using DataOcean.Services.Country;
+using DataOcean.Services.Customer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -47,7 +48,8 @@ namespace DataOcean.API
             services.AddSingleton<ICountryRepository, CountryRepository>();
             services.AddSingleton<ICityService, CityService>();
             services.AddSingleton<ICityRepository, CityRepository>();
-
+            services.AddSingleton<ICustomerService, CustomerService>();
+            services.AddSingleton<ICustomerRepository, CustomerRepository>();
             services.AddControllers();
         }
 
