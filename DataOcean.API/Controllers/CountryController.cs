@@ -45,7 +45,7 @@ namespace DataOcean.API.Controllers
             {
 
                 var result = await _countryService.CreateCountry(model);
-                return Ok("Success");
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@ namespace DataOcean.API.Controllers
             {
 
                 var result = await _countryService.UpdateCountry(model);
-                return Ok(result.Country_Code);
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -76,7 +76,6 @@ namespace DataOcean.API.Controllers
         {
             try
             {
-
                 var result = await _countryService.DeleteCountry(countryCode);
                 return Ok(result);
             }

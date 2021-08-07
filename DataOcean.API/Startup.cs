@@ -19,6 +19,8 @@ namespace DataOcean.API
 {
     public class Startup
     {
+
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,6 +31,16 @@ namespace DataOcean.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
+                    });
+            });
+
+
             services.AddSingleton<DataOceanContext>();
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<ICountryService, CountryService>();
@@ -48,6 +60,8 @@ namespace DataOcean.API
             }
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 

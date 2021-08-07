@@ -60,7 +60,7 @@ namespace DataOcean.Services.Country
             }).ToList();
         }
 
-        public async Task<int> DeleteCountry(int countryCode)
+        public async Task<CountryModel> DeleteCountry(int countryCode)
         {
             var entity = await _unitOfWork.Country.GetCountryById(countryCode);
 
@@ -68,7 +68,7 @@ namespace DataOcean.Services.Country
 
             await _unitOfWork.DataOceanComplete();
 
-            return entity.Country_Code;
+            return new CountryModel() { Country_Code = entity.Country_Code };
         }
     }
 }

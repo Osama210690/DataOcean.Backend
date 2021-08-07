@@ -13,7 +13,7 @@ namespace DataOcean.Services.Country
         Task<List<CountryModel>> GetAllCountries();
         Task<CountryModel> CreateCountry(CountryModel model);
         Task<CountryModel> UpdateCountry(CountryModel model);
-        Task<int> DeleteCountry(int countryCode);
+        Task<CountryModel> DeleteCountry(int countryCode);
 
     }
 }
